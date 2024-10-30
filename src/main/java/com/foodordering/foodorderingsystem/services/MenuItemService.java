@@ -4,18 +4,28 @@ import com.foodordering.foodorderingsystem.entities.MenuItem;
 import com.foodordering.foodorderingsystem.repositories.MenuItemRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-import java.util.List;import java.util.Optional;
 
-@Servicepublic class MenuItemService {
+import java.util.List;
+import java.util.Optional;
 
-    @Autowiredprivate MenuItemRepository menuItemRepository;
+@Service
+public class MenuItemService {
+
+    private final MenuItemRepository menuItemRepository;
+
+    @Autowired
+    public MenuItemService(MenuItemRepository menuItemRepository) {
+        this.menuItemRepository = menuItemRepository;
+    }
 
     public List<MenuItem> getAllMenuItems() {
         return menuItemRepository.findAll();
     }
+
     public Optional<MenuItem> getMenuItemById(Long id) {
         return menuItemRepository.findById(id);
     }
+
     public MenuItem createMenuItem(MenuItem menuItem) {
         return menuItemRepository.save(menuItem);
     }
@@ -24,4 +34,3 @@ import java.util.List;import java.util.Optional;
         menuItemRepository.deleteById(id);
     }
 }
-

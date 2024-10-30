@@ -1,20 +1,23 @@
 package com.foodordering.foodorderingsystem.controllers;
 
-import com.foodordering.foodorderingsystem.entities.User;
-import com.foodordering.foodorderingsystem.repositories.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.*;
-import java.util.List;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RestController;
 
-@RestController@RequestMapping("/api/users")
+@RestController
 public class UserController {
 
-    @Autowiredprivate UserRepository userRepository;
+    @Autowired
+    private UserService userService; // Example service, replace with your actual service class
 
-    @GetMappingpublic List<User> getAllUsers() {
-        return userRepository.findAll();
+    @GetMapping("/users")
+    public List<User> getUsers() {
+        // Implementation
     }
-    @PostMappingpublic User createUser(@RequestBody User user) {
-        return userRepository.save(user);
+
+    @PostMapping("/users")
+    public User createUser(@RequestBody User user) {
+        // Implementation
     }
 }
